@@ -1,6 +1,7 @@
 ﻿namespace Tennis {
     public class ScoreService {
         private PlayersScores _playersScores { get; }
+        public readonly string[] scoreNames = { "Love", "Fifteen", "Thirty", "Forty" };
 
         public ScoreService(PlayersScores playersScores) {
         
