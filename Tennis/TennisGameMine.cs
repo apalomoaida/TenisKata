@@ -14,9 +14,8 @@ namespace Tennis {
         public string GetScore() {
             string s;
             if (_scoreService.ScoreMinorThan4() && (_scoreService.SumScoreMinorThan6())) {
-                string[] scoreNames = { "Love", "Fifteen", "Thirty", "Forty" };
-                s = scoreNames[_playersScores.Player1Score];
-                return (_playersScores.Player1Score == _playersScores.Player2Score) ? s + "-All" : s + "-" + scoreNames[_playersScores.Player2Score];
+                s = _scoreService.scoreNames[_playersScores.Player1Score];
+                return (_playersScores.Player1Score == _playersScores.Player2Score) ? s + "-All" : s + "-" + _scoreService.scoreNames[_playersScores.Player2Score];
             }
             else {
                 if (_scoreService.SoresHasSameValue())
