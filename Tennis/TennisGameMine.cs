@@ -3,15 +3,17 @@ namespace Tennis {
     public class TennisGameMine : ITennisGame
     {
         private static PlayersScores _playersScores;
+        private static ScoreService _scoreService;
 
         public TennisGameMine(string player1Name, string player2Name)
         {
             _playersScores = new PlayersScores(player1Name, player2Name);
+            _scoreService = new ScoreService(_playersScores);
         }
-
+        
         public string GetScore() {
             string s;
-            if (ScoreMinorThan4() && (SumScoreMinorThan6())) {
+            if (_scoreService.ScoreMinorThan4() && (_scoreService.SumScoreMinorThan6())) {
                 string[] scoreNames = { "Love", "Fifteen", "Thirty", "Forty" };
                 s = scoreNames[_playersScores.Player1Score];
                 return (_playersScores.Player1Score == _playersScores.Player2Score) ? s + "-All" : s + "-" + scoreNames[_playersScores.Player2Score];
@@ -22,14 +24,6 @@ namespace Tennis {
                 s = _playersScores.Player1Score > _playersScores.Player2Score ? _playersScores.Player1Name : _playersScores.Player2Name;
                 return ((_playersScores.Player1Score - _playersScores.Player2Score) * (_playersScores.Player1Score - _playersScores.Player2Score) == 1) ? "Advantage " + s : "Win for " + s;
             }
-        }
-
-        private static bool SumScoreMinorThan6() {
-            return _playersScores.Player1Score + _playersScores.Player2Score < 6;
-        }
-
-        private static bool ScoreMinorThan4() {
-            return (_playersScores.Player1Score < 4 && _playersScores.Player2Score < 4);
         }
 
         public void WonPoint(string playerName)
