@@ -19,12 +19,14 @@ namespace Tennis {
                 return (_playersScores.Player1Score == _playersScores.Player2Score) ? s + "-All" : s + "-" + scoreNames[_playersScores.Player2Score];
             }
             else {
-                if (_playersScores.Player1Score == _playersScores.Player2Score)
+                if (_scoreService.SoresHasSameValue())
                     return "Deuce";
                 s = _playersScores.Player1Score > _playersScores.Player2Score ? _playersScores.Player1Name : _playersScores.Player2Name;
                 return ((_playersScores.Player1Score - _playersScores.Player2Score) * (_playersScores.Player1Score - _playersScores.Player2Score) == 1) ? "Advantage " + s : "Win for " + s;
             }
         }
+
+
 
         public void WonPoint(string playerName)
         {
