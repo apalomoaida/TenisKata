@@ -1,25 +1,23 @@
 namespace Tennis {
 
     public class TennisGameMine : ITennisGame {
-        private static PlayersScores _playersScores;
-        private static ScoreService _scoreService;
+        private static Players _players;
+        private static MatchService _match;
 
         public TennisGameMine(string player1Name, string player2Name) {
-            _playersScores = new PlayersScores(player1Name, player2Name);
-            _scoreService = new ScoreService(_playersScores);
+            _players = new Players(player1Name, player2Name);
+            _match = new MatchService(_players);
         }
 
         public string GetScore() {
-            if (_scoreService.GameHaveLessThan6Points(out var score)) return score;
-            if (_scoreService.ScoresHasSameValue()) return "Deuce";
-            return (_scoreService.Player1HasAdvantage() ? "Advantage " : "Win for ") + _scoreService.GetMaxScorePLayerName();
+            if (_match.LessThan6Points(out var score)) return score;
+            if (_match.Same()) return "Deuce";
+            return (_match.HasPlayer1Advantage() ? "Advantage " : "Win for ") + _match.GetBestPlayerName();
         }
 
-        public void WonPoint(string playerName) {
-            if (playerName == "player1")
-                ++_playersScores.Player1Score;
-            else
-                ++_playersScores.Player2Score;
+        public void WonPoint(string playerName)
+        {
+            _players.AddScore(playerName);
         }
     }
 }

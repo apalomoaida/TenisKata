@@ -1,17 +1,17 @@
 ﻿namespace Tennis {
-    public class ScoreService {
-        private PlayersScores _playersScores { get; }
+    public class MatchService {
+        private Players _playersScores { get; }
         private readonly string[] scoreNames = { "Love", "Fifteen", "Thirty", "Forty" };
 
-        public ScoreService(PlayersScores playersScores) {
+        public MatchService(Players playersScores) {
 
             this._playersScores = playersScores;
         }
 
-        public bool GameHaveLessThan6Points(out string score) {
+        public bool LessThan6Points(out string score) {
             if (ScoreMinorThan4() && (SumScoreMinorThan6())) {
                 {
-                    score = GetPlayerScore(_playersScores.Player1Score) + (ScoresHasSameValue() ? "-All" : "-" + GetPlayerScore(_playersScores.Player2Score));
+                    score = GetPlayerScore(_playersScores.Player1Score) + (Same() ? "-All" : "-" + GetPlayerScore(_playersScores.Player2Score));
                     return true;
                 }
             }
@@ -19,14 +19,14 @@
             return false;
         }
 
-        public bool ScoresHasSameValue() {
+        public bool Same() {
             return _playersScores.Player1Score == _playersScores.Player2Score;
         }
-        public string GetMaxScorePLayerName() {
+        public string GetBestPlayerName() {
             return _playersScores.Player1Score > _playersScores.Player2Score ? _playersScores.Player1Name : _playersScores.Player2Name;
         }
 
-        public bool Player1HasAdvantage() {
+        public bool HasPlayer1Advantage() {
             return (SubstractPLayerScore() * SubstractPLayerScore() == 1);
         }
 
