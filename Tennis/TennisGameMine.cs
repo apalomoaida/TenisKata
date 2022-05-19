@@ -10,15 +10,13 @@ namespace Tennis {
         }
 
         public string GetScore() {
-            string s;
             if (_scoreService.ScoreMinorThan4() && (_scoreService.SumScoreMinorThan6())) {
-                s = _scoreService.GetPlayerScore(_playersScores.Player1Score);
-                return (_scoreService.ScoresHasSameValue()) ? s + "-All" : s + "-" + _scoreService.GetPlayerScore(_playersScores.Player2Score);
+                return (_scoreService.ScoresHasSameValue()) ? _scoreService.GetPlayerScore(_playersScores.Player1Score) + "-All" : _scoreService.GetPlayerScore(_playersScores.Player1Score) + "-" + _scoreService.GetPlayerScore(_playersScores.Player2Score);
             }
             if (_scoreService.ScoresHasSameValue())
                 return "Deuce";
-            s = _scoreService.GetMaxScorePLayerName();
-            return (_scoreService.SubstractPLayerScore() * _scoreService.SubstractPLayerScore() == 1) ? "Advantage " + s : "Win for " + s;
+
+            return (_scoreService.SubstractPLayerScore() * _scoreService.SubstractPLayerScore() == 1) ? "Advantage " + _scoreService.GetMaxScorePLayerName() : "Win for " + _scoreService.GetMaxScorePLayerName();
 
         }
         public void WonPoint(string playerName) {
