@@ -8,6 +8,21 @@
             this._playersScores = playersScores;
         }
 
+        public bool GameInProgress(out string score) {
+            if (ScoreMinorThan4() && (SumScoreMinorThan6())) {
+                {
+                    score = (ScoresHasSameValue())
+                        ? GetPlayerScore(_playersScores.Player1Score) + "-All"
+                        : GetPlayerScore(_playersScores.Player1Score) + "-" +
+                          GetPlayerScore(_playersScores.Player2Score);
+                    return true;
+                }
+            }
+
+            score = null;
+            return false;
+        }
+
         public bool SumScoreMinorThan6() {
             return _playersScores.Player1Score + _playersScores.Player2Score < 6;
         }
