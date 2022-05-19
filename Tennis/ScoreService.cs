@@ -26,6 +26,9 @@
         public  string GetPlayerScore(int score) {
             return scoreNames[score];
         }
+        public int MinPLayerScore() {
+            return (_playersScores.Player1Score - _playersScores.Player2Score);
+        }
     }
 }
 
