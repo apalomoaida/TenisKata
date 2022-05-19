@@ -13,9 +13,9 @@ namespace Tennis {
             string s;
             if (_scoreService.ScoreMinorThan4() && (_scoreService.SumScoreMinorThan6())) {
                 s = _scoreService.GetPlayerScore(_playersScores.Player1Score);
-                return (_scoreService.SoresHasSameValue()) ? s + "-All" : s + "-" + _scoreService.GetPlayerScore(_playersScores.Player2Score);
+                return (_scoreService.ScoresHasSameValue()) ? s + "-All" : s + "-" + _scoreService.GetPlayerScore(_playersScores.Player2Score);
             }
-            if (_scoreService.SoresHasSameValue())
+            if (_scoreService.ScoresHasSameValue())
                 return "Deuce";
             s = _scoreService.GetMaxScorePLayerName();
             return (_scoreService.SubstractPLayerScore() * _scoreService.SubstractPLayerScore() == 1) ? "Advantage " + s : "Win for " + s;

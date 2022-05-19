@@ -16,7 +16,7 @@
             return (_playersScores.Player1Score < 4 && _playersScores.Player2Score < 4);
         }
 
-        public bool SoresHasSameValue() {
+        public bool ScoresHasSameValue() {
             return _playersScores.Player1Score == _playersScores.Player2Score;
         }
         public string GetMaxScorePLayerName() {
