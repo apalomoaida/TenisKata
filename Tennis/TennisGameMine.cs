@@ -10,7 +10,7 @@ namespace Tennis {
         }
 
         public string GetScore() {
-            if (_scoreService.GameInProgress(out var score)) return score;
+            if (_scoreService.GameHaveLessThan6Points(out var score)) return score;
             if (_scoreService.ScoresHasSameValue())
                 return "Deuce";
 

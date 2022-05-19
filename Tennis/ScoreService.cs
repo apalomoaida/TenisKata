@@ -8,7 +8,7 @@
             this._playersScores = playersScores;
         }
 
-        public bool GameInProgress(out string score) {
+        public bool GameHaveLessThan6Points(out string score) {
             if (ScoreMinorThan4() && (SumScoreMinorThan6())) {
                 {
                     score = (ScoresHasSameValue())
