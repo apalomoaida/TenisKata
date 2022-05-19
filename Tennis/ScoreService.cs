@@ -18,7 +18,6 @@
                     return true;
                 }
             }
-
             score = null;
             return false;
         }
@@ -41,8 +40,12 @@
         public  string GetPlayerScore(int score) {
             return scoreNames[score];
         }
-        public int SubstractPLayerScore() {
+        private int SubstractPLayerScore() {
             return (_playersScores.Player1Score - _playersScores.Player2Score);
+        }
+
+        public bool Player1HasAdvantage() {
+            return (SubstractPLayerScore() * SubstractPLayerScore() == 1);
         }
     }
 }
