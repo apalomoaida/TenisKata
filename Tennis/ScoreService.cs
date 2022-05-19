@@ -11,10 +11,7 @@
         public bool GameHaveLessThan6Points(out string score) {
             if (ScoreMinorThan4() && (SumScoreMinorThan6())) {
                 {
-                    score = (ScoresHasSameValue())
-                        ? GetPlayerScore(_playersScores.Player1Score) + "-All"
-                        : GetPlayerScore(_playersScores.Player1Score) + "-" +
-                          GetPlayerScore(_playersScores.Player2Score);
+                    score = GetPlayerScore(_playersScores.Player1Score) + (ScoresHasSameValue() ? "-All" : "-" + GetPlayerScore(_playersScores.Player2Score));
                     return true;
                 }
             }
