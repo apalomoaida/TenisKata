@@ -4,7 +4,7 @@
         public readonly string[] scoreNames = { "Love", "Fifteen", "Thirty", "Forty" };
 
         public ScoreService(PlayersScores playersScores) {
-        
+
             this._playersScores = playersScores;
         }
 
@@ -18,6 +18,9 @@
 
         public bool SoresHasSameValue() {
             return _playersScores.Player1Score == _playersScores.Player2Score;
+        }
+        private string GetMaxScorePLayerName() {
+            return _playersScores.Player1Score > _playersScores.Player2Score ? _playersScores.Player1Name : _playersScores.Player2Name;
         }
     }
 }
