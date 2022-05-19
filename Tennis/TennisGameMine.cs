@@ -18,7 +18,7 @@ namespace Tennis {
             if (_scoreService.SoresHasSameValue())
                 return "Deuce";
             s = _scoreService.GetMaxScorePLayerName();
-            return (_scoreService.MinPLayerScore() * _scoreService.MinPLayerScore() == 1) ? "Advantage " + s : "Win for " + s;
+            return (_scoreService.SubstractPLayerScore() * _scoreService.SubstractPLayerScore() == 1) ? "Advantage " + s : "Win for " + s;
 
         }
         public void WonPoint(string playerName) {

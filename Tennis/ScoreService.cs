@@ -26,7 +26,7 @@
         public  string GetPlayerScore(int score) {
             return scoreNames[score];
         }
-        public int MinPLayerScore() {
+        public int SubstractPLayerScore() {
             return (_playersScores.Player1Score - _playersScores.Player2Score);
         }
     }
