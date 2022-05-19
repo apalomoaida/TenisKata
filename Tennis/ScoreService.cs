@@ -19,8 +19,12 @@
         public bool SoresHasSameValue() {
             return _playersScores.Player1Score == _playersScores.Player2Score;
         }
-        private string GetMaxScorePLayerName() {
+        public string GetMaxScorePLayerName() {
             return _playersScores.Player1Score > _playersScores.Player2Score ? _playersScores.Player1Name : _playersScores.Player2Name;
+        }
+
+        public  string GetPlayerScore(int score) {
+            return scoreNames[score];
         }
     }
 }

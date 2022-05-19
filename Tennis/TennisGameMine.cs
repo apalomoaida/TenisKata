@@ -12,8 +12,8 @@ namespace Tennis {
         public string GetScore() {
             string s;
             if (_scoreService.ScoreMinorThan4() && (_scoreService.SumScoreMinorThan6())) {
-                s = _scoreService.scoreNames[_playersScores.Player1Score];
-                return (_scoreService.SoresHasSameValue()) ? s + "-All" : s + "-" + _scoreService.scoreNames[_playersScores.Player2Score];
+                s = ScoreService.GetPlayer1Score();
+                return (_scoreService.SoresHasSameValue()) ? s + "-All" : s + "-" + ScoreService.GetPlayer2Score();
             }
 
             if (_scoreService.SoresHasSameValue())
@@ -23,15 +23,13 @@ namespace Tennis {
 
         }
 
-   
 
         public void WonPoint(string playerName) {
             if (playerName == "player1")
-                _playersScores.Player1Score += 1;
+                ++_playersScores.Player1Score;
             else
-                _playersScores.Player2Score += 1;
+                ++_playersScores.Player2Score;
         }
-
     }
 }
 
